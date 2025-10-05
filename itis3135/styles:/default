@@ -38,3 +38,26 @@ img {
 footer p {
   margin: 5px;
 }
+
+main a:link {
+  color: #004080; 
+  text-decoration: none;
+}
+
+main a:visited {
+  color: #003366; 
+}
+
+main a:hover {
+  color: #ff6600; 
+  text-decoration: underline;
+}
+
+main a:active {
+  color: #cc0000; 
+  text-decoration: underline;
+}
+
+main a {
+  transition: color 0.3s ease;
+}
