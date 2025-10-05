@@ -64,26 +64,24 @@ main a {
   transition: color 0.3s ease;
 }
 
-/* ===== Responsive Layout Updates ===== */
 
-/* Make the main content flexible and centered */
 main {
-  width: 90%;          /* Allows layout to shrink with screen */
-  max-width: 1200px;   /* Prevents content from stretching too wide */
-  margin: 0 auto;      /* Centers content horizontally */
+  width: 90%;          
+  max-width: 1200px;   
+  margin: 0 auto;     
   background-color: #fff;
 }
 
-/* ===== Media Queries for Different Devices ===== */
 
-/* Laptops / Small Desktops (981px–1400px) */
+
+
 @media screen and (min-width: 981px) and (max-width: 1400px) {
   main {
     width: 85%;
   }
 }
 
-/* Tablets (601px–980px) */
+
 @media screen and (min-width: 601px) and (max-width: 980px) {
   main {
     width: 90%;
@@ -95,10 +93,10 @@ main {
   }
 }
 
-/* Mobile Phones (up to 600px) */
+
 @media screen and (max-width: 600px) {
   body {
-    background-color: #eaeaea; /* Slight contrast for small screens */
+    background-color: #eaeaea; 
   }
 
   main {
