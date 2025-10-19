@@ -1,401 +1,252 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jordi's Gaming Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casual Gaming</title>
 
-  <!-- Embedded stylesheet (required) -->
+  <!-- Embedded Stylesheet -->
   <style>
-    /* Typography + page base */
-    :root{
-      --bg:#0f1226;
-      --panel:#151733;
-      --accent:#48c0ff;
-      --accent-2:#ffb86b;
-      --muted:#bfc7df;
-      --glass: rgba(255,255,255,0.03);
-      --focus: 3px solid rgba(72,192,255,0.14);
-    }
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:
-        radial-gradient(ellipse at 10% 10%, rgba(72,192,255,0.03), transparent 20%),
-        radial-gradient(ellipse at 90% 90%, rgba(255,184,107,0.02), transparent 20%),
-        var(--bg);
-      color:var(--muted);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
     }
 
-    /* layout */
-    header, footer { background: linear-gradient(90deg,#0e1b3a,#162045); color:white; }
-    header{
-      padding:18px 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-      position:sticky; top:0; z-index:10;
-    }
-    main{ padding:28px 20px; max-width:1100px; margin: 18px auto 80px; }
-
-    /* Header content */
-    .brand{
-      display:flex; align-items:center; gap:14px; justify-content:space-between; flex-wrap:wrap;
-      max-width:1100px; margin:0 auto;
-    }
-    h1{ font-size:1.8rem; margin:0; letter-spacing:1px; color:var(--accent-2); }
-    .tagline{ font-size:0.9rem; color:var(--muted); margin-top:4px; }
-
-    /* Navigation (inline links separated by custom divider) */
-    nav{
-      margin-top:12px;
-      display:flex; gap:8px; align-items:center; flex-wrap:wrap;
-    }
-    .navlinks{
-      display:flex; gap:6px; align-items:center; flex-wrap:wrap;
-    }
-    .navlinks a{
-      background:transparent;
-      border:0;
-      color:var(--accent);
-      text-decoration:none;
-      padding:8px 12px;
-      border-radius:10px;
-      font-weight:600;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease;
-    }
-    .navlinks a:hover{ transform:translateY(-2px); background:var(--glass); }
-    .divider{ color: #ffd96a; margin: 0 6px; user-select:none; }
-
-    /* Sections */
-    section{
-      display:none; /* hidden except active */
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;
-      padding:20px;
-      margin:18px auto;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    section.active{ display:block; }
-
-    h2{
-      color:var(--accent);
-      margin-top:0;
-      margin-bottom:12px;
-      font-size:1.3rem;
-      display:flex; align-items:center; gap:10px;
+    header {
+      background: #111;
+      color: #0ff;
+      text-align: center;
+      padding: 1em 0;
+      border-bottom: 3px solid #0ff;
     }
 
-    p{ margin:10px 0; color:var(--muted); }
-
-    /* figure */
-    figure{ margin:14px 0; text-align:center; }
-    figcaption{ font-style:italic; color: #9fb6d8; margin-top:6px; }
-    figure svg{ max-width:100%; height:auto; border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); padding:8px; }
-
-    em.prompt{
-      display:block;
-      font-style:italic;
-      color:#98a9c7;
-      margin-top:8px;
-      font-size:0.9rem;
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
 
-    /* tables, lists */
-    table{ width:100%; border-collapse:collapse; background:transparent; margin-top:10px; }
-    th,td{ border:1px solid rgba(255,255,255,0.04); padding:10px; text-align:left; color:var(--muted); }
-    th{ color:var(--accent-2); }
-
-    ul{ padding-left:1.2rem; }
-    li{ margin:6px 0; }
-
-    /* small responsive tweaks */
-    @media (min-width:900px){
-      .two-col{ display:grid; grid-template-columns: 1fr 340px; gap:18px; align-items:start; }
+    nav a:hover {
+      color: #0ff;
     }
 
-    /* footer */
-    footer{
-      padding:16px 20px;
-      position:fixed; left:0; right:0; bottom:0; display:flex; justify-content:center; align-items:center;
-      gap:14px; flex-direction:column;
+    main {
+      padding: 2em;
+      text-align: center;
     }
-    footer p{ margin:4px 0; color:#dfe9ff; font-size:0.95rem; }
-    footer a{ color:var(--accent-2); text-decoration:none; font-weight:600; }
-    footer a:hover{ text-decoration:underline; }
 
-    /* focus style for accessibility */
-    a:focus, button:focus { outline: none; box-shadow: var(--focus); border-radius:8px; }
+    section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
 
-    /* small utility */
-    .btn {
-      display:inline-block; padding:8px 12px; background:linear-gradient(90deg,var(--accent),#6fe2ff22);
-      color:#001821; border-radius:10px; font-weight:700; text-decoration:none;
+    section.active {
+      display: block;
+    }
+
+    figure {
+      text-align: center;
+      margin: 1.5em auto;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    figcaption {
+      font-style: italic;
+      color: #ccc;
+      margin-top: 0.5em;
+      font-size: 0.9em;
+    }
+
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 1em 0;
+      border-top: 3px solid #0ff;
+    }
+
+    footer a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      color: #0ff;
+      margin: 0 5px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8em; }
+      h2 { font-size: 1.4em; }
+      nav a { display: block; margin: 0.5em 0; }
     }
   </style>
-
-  <!-- small script to show/hide sections -->
-  <script>
-    function showSection(id){
-      const secs = document.querySelectorAll('main section');
-      secs.forEach(s => s.classList.remove('active'));
-      const target = document.getElementById(id);
-      if(target) target.classList.add('active');
-      // update location hash for back-button usability
-      history.replaceState(null, '', '#'+id);
-      // scroll to top of main so page feels like a "new page"
-      window.scrollTo({top:0, behavior:'smooth'});
-    }
-    window.addEventListener('DOMContentLoaded', () => {
-      const hash = location.hash ? location.hash.replace('#','') : 'what';
-      showSection(hash);
-      // set up nav links that have data-target
-      document.querySelectorAll('[data-target]').forEach(btn=>{
-        btn.addEventListener('click', e=>{
-          e.preventDefault();
-          showSection(btn.getAttribute('data-target'));
-        });
-      });
-    });
-  </script>
 </head>
+
 <body>
   <header>
-    <div class="brand" role="banner">
-      <div style="text-align:left;">
-        <h1>Jordi's Gaming Hub</h1>
-        <div class="tagline">Casual gaming, friends, and good vibes — guides, tips, and hangouts.</div>
-      </div>
-
-      <nav aria-label="Primary">
-        <div class="navlinks" role="navigation" aria-label="Hobby navigation">
-          <a href="#what" data-target="what">What</a><span class="divider">⚡</span>
-          <a href="#who" data-target="who">Who</a><span class="divider">⚡</span>
-          <a href="#when" data-target="when">When</a><span class="divider">⚡</span>
-          <a href="#where" data-target="where">Where</a><span class="divider">⚡</span>
-          <a href="#how" data-target="how">How</a><span class="divider">⚡</span>
-          <a href="#why" data-target="why">Why</a><span class="divider">⚡</span>
-          <a href="#ai-prompts" data-target="ai-prompts">AI Prompts</a>
-        </div>
-      </nav>
-    </div>
+    <h1>Casual Gaming</h1>
+    <nav>
+      <a href="#" onclick="showSection('what')">🎮 What</a><span class="divider">•</span>
+      <a href="#" onclick="showSection('who')">🧑 Who</a><span class="divider">•</span>
+      <a href="#" onclick="showSection('when')">⏰ When</a><span class="divider">•</span>
+      <a href="#" onclick="showSection('where')">🌍 Where</a><span class="divider">•</span>
+      <a href="#" onclick="showSection('how')">🕹️ How</a><span class="divider">•</span>
+      <a href="#" onclick="showSection('why')">💡 Why</a><span class="divider">•</span>
+      <a href="#" onclick="showSection('ai')">🤖 AI Prompts</a>
+    </nav>
   </header>
 
-  <main role="main" aria-live="polite">
-    <!-- WHAT (home) -->
-    <section id="what" class="active" aria-labelledby="whatH2">
-      <h2 id="whatH2">What — The Casual Gaming Experience</h2>
-      <div class="two-col">
-        <div>
-          <p>Gaming casually is about having fun, exploring cozy worlds, and hanging with friends. It’s low-pressure, social, and a great way to unwind after classes or work.</p>
-
-          <p>Whether you play short mobile sessions, cozy sims, or jump into a quick multiplayer match, casual gaming fits into everyday life.</p>
-
-          <table aria-label="Popular casual genres table">
-            <thead>
-              <tr><th>Genre</th><th>Why it's great casually</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Simulation</td><td>Relaxing; play at your own pace (e.g., Stardew, The Sims)</td></tr>
-              <tr><td>Puzzle</td><td>Short sessions, satisfying problem solving (e.g., Portal, Tetris)</td></tr>
-              <tr><td>Multiplayer Party</td><td>Quick laughs with friends (e.g., Among Us, Fall Guys)</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <aside>
-          <figure>
-            <!-- lightweight SVG illustration (casual gaming couch scene) -->
-            <svg width="420" height="240" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Casual living room gaming illustration">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#2b2f6b"/><stop offset="1" stop-color="#17203d"/></linearGradient>
-              </defs>
-              <rect x="0" y="0" width="420" height="240" rx="12" fill="url(#g1)"/>
-              <!-- simple couch -->
-              <rect x="40" y="130" width="340" height="60" rx="10" fill="#2ea8ff" opacity="0.12"/>
-              <rect x="60" y="100" width="120" height="60" rx="10" fill="#ffd06b" opacity="0.12"/>
-              <!-- TV -->
-              <rect x="170" y="40" width="200" height="100" rx="8" fill="#071028"/>
-              <rect x="185" y="55" width="170" height="70" rx="6" fill="#0b2540"/>
-              <!-- controller -->
-              <ellipse cx="210" cy="180" rx="18" ry="10" fill="#ffb86b"/>
-              <ellipse cx="260" cy="180" rx="18" ry="10" fill="#48c0ff"/>
-            </svg>
-            <figcaption>Casual couch gaming — cozy sessions with friends.</figcaption>
-            <em class="prompt">AI prompt suggestion: "cozy living room casual gaming scene, friends on couch with controllers and a TV, warm lighting, stylized illustration"</em>
-          </figure>
-        </aside>
-      </div>
-    </section>
-
-    <!-- WHO -->
-    <section id="who" aria-labelledby="whoH2">
-      <h2 id="whoH2">Who — The Community</h2>
-
-      <p>Casual gamers include students, roommates, parents, and anyone who wants to relax and laugh. Communities form around shared games, friendly streams, and local hangouts.</p>
+  <main>
+    <!-- WHAT Section -->
+    <section id="what" class="active">
+      <h2>What is Casual Gaming?</h2>
+      <p>Casual gaming is all about playing games for relaxation and fun rather than competition. Whether it’s on your phone, console, or PC, casual games are for everyone.</p>
 
       <figure>
-        <!-- small SVG group of diverse avatars -->
-        <svg width="700" height="160" viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Group of casual gamers illustration">
-          <rect width="700" height="160" rx="10" fill="#0f1730"/>
-          <circle cx="80" cy="80" r="30" fill="#ffd06b" />
-          <rect x="120" y="60" width="50" height="40" rx="8" fill="#48c0ff" />
-          <circle cx="240" cy="80" r="30" fill="#8ee3a6"/>
-          <rect x="280" y="60" width="50" height="40" rx="8" fill="#ff9fb5" />
-          <circle cx="400" cy="80" r="30" fill="#b6b9ff"/>
-          <rect x="440" y="60" width="50" height="40" rx="8" fill="#ffd06b" />
-          <circle cx="560" cy="80" r="30" fill="#98d0ff"/>
-          <rect x="600" y="60" width="50" height="40" rx="8" fill="#c6ffa6" />
-        </svg>
-        <figcaption>Players from different backgrounds — casual, welcoming, and friendly.</figcaption>
-        <em class="prompt">AI prompt suggestion: "diverse casual gamers portrait illustration, smiling, friendly colors, stylized cartoon"</em>
+        <img src="images/What.jpg" alt="Casual gamer playing on a console" />
+        <figcaption>Relaxing with a game after a long day.</figcaption>
       </figure>
+      <p><em>AI Prompt: "A photorealistic image of a young adult casually gaming in a cozy room, soft lighting, realistic textures, natural pose."</em></p>
 
-      <ul>
-        <li>Solo chill players (story & sims)</li>
-        <li>Social players (party & co-op)</li>
-        <li>Weekend streamers and friendly communities</li>
-      </ul>
-    </section>
-
-    <!-- WHEN -->
-    <section id="when" aria-labelledby="whenH2">
-      <h2 id="whenH2">When — Best Times to Play</h2>
-
-      <p>Casual gaming fits into little pockets of time: commute breaks (mobile), evenings after class, or weekend sessions with friends.</p>
-
-      <figure>
-        <!-- small SVG clock with controller -->
-        <svg width="420" height="160" viewBox="0 0 420 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="When to play illustration">
-          <rect width="420" height="160" rx="10" fill="#081022"/>
-          <circle cx="120" cy="80" r="42" fill="#1f2b4a"/>
-          <rect x="110" y="40" width="20" height="40" rx="6" fill="#ffd06b" transform="rotate(15 120 80)"/>
-          <rect x="120" y="70" width="2" height="22" rx="1" fill="#48c0ff" transform="rotate(-45 121 81)"/>
-          <rect x="220" y="70" width="140" height="60" rx="8" fill="#0f2745"/>
-          <rect x="235" y="85" width="20" height="12" rx="3" fill="#ffd06b"/>
-        </svg>
-        <figcaption>Pick the time that fits your life — short sessions or longer hangouts.</figcaption>
-        <em class="prompt">AI prompt suggestion: "stylized illustration of a clock and game controller signifying gaming times, warm friendly palette"</em>
-      </figure>
-
-      <table>
-        <thead><tr><th>Time</th><th>What to play</th></tr></thead>
-        <tbody>
-          <tr><td>Morning</td><td>Short puzzles, mobile warm-ups</td></tr>
-          <tr><td>Evening</td><td>Story games & co-op</td></tr>
-          <tr><td>Weekend</td><td>Long sessions, party lobbies</td></tr>
-        </tbody>
+      <table border="1" style="margin:auto; border-collapse:collapse; color:#fff;">
+        <tr><th>Platform</th><th>Popular Casual Games</th></tr>
+        <tr><td>Mobile</td><td>Candy Crush, Among Us</td></tr>
+        <tr><td>Console</td><td>Mario Kart, Animal Crossing</td></tr>
+        <tr><td>PC</td><td>Stardew Valley, The Sims</td></tr>
       </table>
     </section>
 
-    <!-- WHERE -->
-    <section id="where" aria-labelledby="whereH2">
-      <h2 id="whereH2">Where — Cozy Spots & Hangouts</h2>
-
-      <p>Play from your couch, a friend's house, or a comfy cafe — the best spots are where you feel relaxed and connected.</p>
+    <!-- WHO Section -->
+    <section id="who">
+      <h2>Who Plays Casual Games?</h2>
+      <p>Casual gamers come from all walks of life. Students, workers, parents — anyone who enjoys a little digital escape.</p>
 
       <figure>
-        <!-- small SVG map pin + couch -->
-        <svg width="700" height="140" viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Where to play illustration">
-          <rect width="700" height="140" rx="10" fill="#08122a"/>
-          <path d="M100 40 C140 0, 260 0, 300 40 C340 80, 220 120, 100 40Z" fill="#48c0ff" opacity="0.08"/>
-          <circle cx="120" cy="70" r="18" fill="#ffd06b"/>
-          <rect x="240" y="40" width="160" height="60" rx="8" fill="#0f2745"/>
-        </svg>
-        <figcaption>Cozy rooms, local cafes, and online lobbies — pick your vibe.</figcaption>
-        <em class="prompt">AI prompt suggestion: "cozy gaming spots: living room, small gaming cafe, and online lobby icons, stylized illustration"</em>
+        <img src="images/Who.jpg" alt="Group of people playing casual games" />
+        <figcaption>Friends bonding over games.</figcaption>
       </figure>
+      <p><em>AI Prompt: "Photorealistic group of diverse friends playing casual video games together in a cozy living room."</em></p>
 
-      <ol>
-        <li>Home setup — comfort and control</li>
-        <li>Friends' place — social and fun</li>
-        <li>Local game cafe — meet new players</li>
-      </ol>
+      <p>Casual gaming builds connection and community, even across generations and backgrounds.</p>
     </section>
 
-    <!-- HOW -->
-    <section id="how" aria-labelledby="howH2">
-      <h2 id="howH2">How — Getting Started Easily</h2>
-
-      <p>Start small: pick one platform (mobile / console / PC), choose 1–2 games, and invite a friend. Learn through playing and enjoy the process.</p>
+    <!-- WHEN Section -->
+    <section id="when">
+      <h2>When Do People Play?</h2>
+      <p>Casual gaming fits around daily life — in the evening, during lunch breaks, or while traveling.</p>
 
       <figure>
-        <!-- simple controller + phone svg -->
-        <svg width="420" height="160" viewBox="0 0 420 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How to start illustration">
-          <rect width="420" height="160" rx="10" fill="#06122a"/>
-          <rect x="90" y="50" width="120" height="70" rx="14" fill="#11214a"/>
-          <rect x="230" y="60" width="90" height="50" rx="8" fill="#0e2a4a"/>
-          <circle cx="140" cy="85" r="8" fill="#ffd06b"/>
-          <circle cx="260" cy="85" r="6" fill="#48c0ff"/>
-        </svg>
-        <figcaption>Simple steps to begin—gear isn't everything; friends and games matter more.</figcaption>
-        <em class="prompt">AI prompt suggestion: "simple illustration of a game controller and phone showing casual gaming, friendly style"</em>
+        <img src="images/When.jpg" alt="Person gaming at night" />
+        <figcaption>Late-night gaming for relaxation.</figcaption>
       </figure>
+      <p><em>AI Prompt: "Photorealistic person gaming at night on a PC setup with neon lights, calm mood."</em></p>
 
-      <form aria-label="Quick starter form" onsubmit="event.preventDefault(); alert('Nice! You can now try one of these starter ideas.');">
-        <label for="platform">Pick a platform:</label>
-        <select id="platform" name="platform" style="margin-left:8px;">
-          <option>PC</option><option>Console</option><option>Mobile</option>
-        </select>
-        <button type="submit" class="btn" style="margin-left:12px;">Get Starter Tip</button>
-      </form>
+      <p>Gaming anytime you have a few minutes to unwind keeps stress low and enjoyment high.</p>
     </section>
 
-    <!-- WHY -->
-    <section id="why" aria-labelledby="whyH2">
-      <h2 id="whyH2">Why — Benefits of Casual Gaming</h2>
-
-      <p>Casual gaming relaxes the mind, sparks creativity, and creates social bonds without the pressure of competitive pro play.</p>
+    <!-- WHERE Section -->
+    <section id="where">
+      <h2>Where to Game?</h2>
+      <p>Anywhere! From your couch to a café, gaming has no limits. All you need is your device and an internet connection.</p>
 
       <figure>
-        <!-- small SVG showing smile and headset -->
-        <svg width="700" height="140" viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Why illustration">
-          <rect width="700" height="140" rx="10" fill="#08112a"/>
-          <circle cx="110" cy="70" r="30" fill="#ffd06b"/>
-          <path d="M150 60 q40 0 40 25 q0 40 -40 40 z" fill="#48c0ff" opacity="0.06"/>
-          <rect x="300" y="40" width="280" height="60" rx="8" fill="#0f2745"/>
-        </svg>
-        <figcaption>Relaxation, creativity, and community — the core wins of casual play.</figcaption>
-        <em class="prompt">AI prompt suggestion: "stylized illustration representing relaxation and creativity through gaming, light and friendly colors"</em>
+        <img src="images/Where.jpg" alt="Person gaming at a cafe" />
+        <figcaption>Gaming on the go.</figcaption>
       </figure>
+      <p><em>AI Prompt: "Photorealistic gamer playing on a laptop at a café, warm light and cozy environment."</em></p>
 
-      <ul>
-        <li>Stress relief and relaxation</li>
-        <li>Improved problem solving & creativity</li>
-        <li>Strengthened social ties with friends & community</li>
+      <p>Many players enjoy portable gaming setups that allow them to connect anywhere.</p>
+    </section>
+
+    <!-- HOW Section -->
+    <section id="how">
+      <h2>How to Get Started</h2>
+      <p>All you need is a device and curiosity! Download a casual game that interests you and start exploring at your own pace.</p>
+
+      <figure>
+        <img src="images/How.jpg" alt="Setting up a gaming console" />
+        <figcaption>Setting up your gaming environment.</figcaption>
+      </figure>
+      <p><em>AI Prompt: "Photorealistic person setting up a gaming console with modern TV setup, soft lighting."</em></p>
+
+      <ul style="text-align:left; display:inline-block;">
+        <li>Choose your platform (mobile, console, or PC)</li>
+        <li>Start with easy games</li>
+        <li>Play for fun, not competition</li>
       </ul>
     </section>
 
-    <!-- AI PROMPTS -->
-    <section id="ai-prompts" aria-labelledby="aiH2">
-      <h2 id="aiH2">AI Prompts & Image Notes</h2>
+    <!-- WHY Section -->
+    <section id="why">
+      <h2>Why I Love Casual Gaming</h2>
+      <p>Casual gaming helps me relax, focus, and reconnect with creativity. It’s a simple joy that turns stress into play.</p>
 
-      <p><strong>Note:</strong> I included lightweight SVG illustrations inline to keep the page fast and simple. Below are **sample AI prompts** you can use to generate photorealistic or stylized images (DALL·E, Midjourney, etc.) if you prefer to replace the SVGs with generated images. If you'd like, I can generate and provide those images for you.</p>
+      <figure>
+        <img src="images/Why.jpg" alt="Person smiling while playing a video game" />
+        <figcaption>Joy and peace through gaming.</figcaption>
+      </figure>
+      <p><em>AI Prompt: "Photorealistic smiling young adult playing a video game, colorful screen light reflections."</em></p>
 
-      <ul>
-        <li><strong>Casual living room gaming scene</strong> — <em>"cozy living room casual gaming scene, friends on couch with controllers and a TV, warm lighting, stylized illustration"</em></li>
-        <li><strong>Diverse gamer group portrait</strong> — <em>"diverse group of casual gamers playing together, warm colors, friendly smile, stylized cartoon"</em></li>
-        <li><strong>Nighttime/late-night gaming</strong> — <em>"person gaming at night with soft neon lights, cozy atmosphere, stylized photoreal or illustration"</em></li>
-        <li><strong>Esports / meetup crowd (optional)</strong> — <em>"small esports event in a cafe-like space, casual crowd cheering, stylized"</em></li>
-        <li><strong>Controller + phone (how-to)</strong> — <em>"simple controller and phone showing casual mobile gaming, flat friendly illustration"</em></li>
-        <li><strong>Relax and smile (why)</strong> — <em>"happy gamer with headset smiling, warm palette, stylized illustration"</em></li>
+      <blockquote>"Gaming isn’t just about winning — it’s about enjoying the moment."</blockquote>
+    </section>
+
+    <!-- AI Prompts Section -->
+    <section id="ai">
+      <h2>AI Prompts Used</h2>
+      <p><strong>Model:</strong> GPT-5 & DALL·E (Photorealistic Mode)</p>
+      <ul style="text-align:left; display:inline-block;">
+        <li><b>What.jpg:</b> “A photorealistic image of a young adult casually gaming in a cozy room.”</li>
+        <li><b>Who.jpg:</b> “Group of diverse friends playing casual video games together.”</li>
+        <li><b>When.jpg:</b> “Person gaming at night on a PC setup with neon lights.”</li>
+        <li><b>Where.jpg:</b> “Gamer playing on a laptop at a café.”</li>
+        <li><b>How.jpg:</b> “Person setting up a gaming console with modern TV setup.”</li>
+        <li><b>Why.jpg:</b> “Smiling young adult playing a video game with screen light reflections.”</li>
       </ul>
-
-      <p><strong>AI model suggestion:</strong> DALL·E or Stable Diffusion for photoreal; Midjourney for stylized/artsy imagery. Use keywords like <em>casual, cozy, warm lighting, stylized illustration</em> to keep images consistent.</p>
     </section>
   </main>
 
-  <footer role="contentinfo">
-    <p>designed by <a href="../trejodesigns/index.html">Jordi Trejo Designs</a></p>
+  <footer>
+    <p>Designed by <a href="https://webpages.charlotte.edu/YOURID/itis3135/trejodesigns">Trejo Designs</a></p>
     <p>
-      <a href="https://validator.w3.org/check?uri=referer" target="_blank" rel="noopener">HTML Validation</a> |
-      <a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank" rel="noopener">CSS Validation</a> |
-      <a href="https://wave.webaim.org/" target="_blank" rel="noopener">Accessibility Check</a>
+      <a href="https://validator.w3.org/">HTML</a> |
+      <a href="https://jigsaw.w3.org/css-validator/">CSS</a> |
+      <a href="https://wave.webaim.org/">Accessibility</a>
     </p>
   </footer>
+
+  <!-- JavaScript to Switch Sections -->
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
 </body>
 </html>
