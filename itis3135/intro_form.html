@@ -1,84 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction Form - Jordi Trejo</title>
-  <link rel="stylesheet" href="styles/main.css" />
-  <script src="scripts/introduction.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jordi Trejo | ITIS 3135 | Introduction Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      max-width: 900px;
+      width: 90%;
+      min-width: 320px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      color: #004080;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    h2 {
+      font-family: Trebuchet MS, sans-serif;
+      color: #0073e6;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #004080;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main p, main ul {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 200px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    fieldset {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      background-color: #fff;
+    }
+    legend {
+      font-weight: bold;
+      color: #004080;
+    }
+    .form-buttons {
+      text-align: center;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 16px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .course {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .course input {
+      flex: 1 1 45%;
+    }
+  </style>
 </head>
 <body>
-  <header id="site-header"></header>
+  <!-- Dynamic Header -->
+  <div data-include="components/header.html"></div>
 
   <main>
     <h2>Introduction Form</h2>
-    <h3>Please submit the form below.</h3>
+    <h3 style="text-align:center;">Please submit the form below.</h3>
 
     <form id="intro-form">
 
       <fieldset>
-        <legend>Basic Info</legend>
-        <label>First Name: <input type="text" name="firstName" required value="Jordi" placeholder="Enter your first name" /></label><br>
-        <label>Middle Name/Initial: <input type="text" name="middleName" placeholder="Optional" /></label><br>
-        <label>Nickname/Preferred Name: <input type="text" name="nickname" placeholder="Optional" /></label><br>
-        <label>Last Name: <input type="text" name="lastName" required value="Trejo" placeholder="Enter your last name" /></label><br>
+        <legend>Basic Information</legend>
+        <label>First Name:
+          <input type="text" name="firstName" value="Jordi" required placeholder="Enter first name">
+        </label>
+        <label>Middle Name (optional):
+          <input type="text" name="middleName" placeholder="Optional">
+        </label>
+        <label>Nickname (optional):
+          <input type="text" name="nickname" placeholder="Optional">
+        </label>
+        <label>Last Name:
+          <input type="text" name="lastName" value="Trejo" required placeholder="Enter last name">
+        </label>
       </fieldset>
 
       <fieldset>
-        <legend>Mascot Info</legend>
-        <label>Mascot Adjective: <input type="text" name="mascotAdj" required value="Curious" /></label><br>
-        <label>Mascot Animal: <input type="text" name="mascotAnimal" required value="Elephant" /></label><br>
-        <label>Divider: <input type="text" name="divider" value="♥️" required /></label><br>
-      </fieldset>
-
-      <fieldset>
-        <legend>Image</legend>
-        <label>Picture: 
-          <input type="file" name="picture" accept="image/*" />
-        </label><br>
-        <label>Picture Caption: 
-          <input type="text" name="caption" value="Me exploring creativity" />
-        </label><br>
-      </fieldset>
-
-      <fieldset>
-        <legend>Personal Statement</legend>
-        <textarea name="statement" rows="4" required placeholder="Write your introduction here...">I'm a UNCC student who loves technology and creativity.</textarea>
+        <legend>Personal Information</legend>
+        <label>Personal Background:
+          <textarea name="personalBackground" required>I’m a senior at UNCC and the 2nd person in my family to attend a 4-year college.</textarea>
+        </label>
+        <label>Professional Background:
+          <textarea name="professionalBackground" required>Worked 3 jobs: 2 at Amazon, 1 as a recreational assistant.</textarea>
+        </label>
+        <label>Academic Background:
+          <textarea name="academicBackground" required>Computer Science major, Senior</textarea>
+        </label>
+        <label>Background in this Course:
+          <textarea name="courseBackground" required>Required to graduate</textarea>
+        </label>
+        <label>Primary Computer Platform:
+          <input type="text" name="platform" value="macOS" required>
+        </label>
       </fieldset>
 
       <fieldset id="courses">
-        <legend>Courses</legend>
+        <legend>Courses I’m Taking</legend>
         <div class="course">
-          <input type="text" name="dept" value="ITIS" required placeholder="Department" />
-          <input type="text" name="num" value="3135" required placeholder="Number" />
-          <input type="text" name="name" value="Web App Design" required placeholder="Course name" />
-          <input type="text" name="reason" value="To improve my web development skills" required placeholder="Reason" />
+          <input type="text" name="courseDept" value="ITIS" required placeholder="Department">
+          <input type="text" name="courseNum" value="3135" required placeholder="Number">
+          <input type="text" name="courseName" value="Web App Design" required placeholder="Course name">
+          <input type="text" name="courseReason" value="To improve my web development skills" required placeholder="Reason">
         </div>
         <button type="button" id="add-course">Add Course</button>
       </fieldset>
 
       <fieldset>
-        <legend>Quote</legend>
-        <input type="text" name="quote" value="Stay curious." required />
-        <input type="text" name="author" value="Anonymous" required />
+        <legend>Additional Details</legend>
+        <label>Interesting Story:
+          <input type="text" name="story" value="I am the oldest of six siblings and have three younger brothers.">
+        </label>
+        <label>Something Else:
+          <input type="text" name="something" value="I love playing video games every day.">
+        </label>
+        <label>Picture Upload:
+          <input type="file" name="picture" accept="image/*">
+        </label>
+        <label>Picture Caption:
+          <input type="text" name="caption" value="Photo of Jordi Trejo">
+        </label>
       </fieldset>
 
-      <fieldset>
-        <legend>Extras</legend>
-        <label>Funny Thing: <input type="text" name="funny" placeholder="Optional" /></label><br>
-        <label>Something to Share: <input type="text" name="share" placeholder="Optional" /></label><br>
-      </fieldset>
-
-      <fieldset>
-        <legend>Links</legend>
-        <input type="url" name="link1" value="https://linkedin.com/in/jorditrejo" placeholder="LinkedIn" /><br>
-        <input type="url" name="link2" placeholder="GitHub" /><br>
-        <input type="url" name="link3" placeholder="Portfolio" /><br>
-        <input type="url" name="link4" placeholder="Twitter" /><br>
-        <input type="url" name="link5" placeholder="Other link" /><br>
-      </fieldset>
-
-      <div class="form-controls">
+      <div class="form-buttons">
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
         <button type="button" id="clear">Clear</button>
@@ -86,6 +179,10 @@
     </form>
   </main>
 
-  <footer id="site-footer"></footer>
+  <!-- Dynamic Footer -->
+  <div data-include="components/footer.html"></div>
+
+  <script src="scripts/HTMLInclude.js"></script>
+  <script src="scripts/introduction.js"></script>
 </body>
 </html>
