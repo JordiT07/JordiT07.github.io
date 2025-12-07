@@ -1,15 +1,19 @@
-function loadTrainingDetails() {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "extra_info.txt", true);
-  xhr.onload = function () {
-    if (this.status === 200) {
-      document.getElementById("ajax-content").innerHTML = this.responseText;
-    } else {
-      document.getElementById("ajax-content").innerHTML = "Unable to load content.";
-    }
-  };
-  xhr.onerror = function () {
-    document.getElementById("ajax-content").innerHTML = "Error loading file.";
-  };
-  xhr.send();
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const loadBtn = document.getElementById("load-more");
+  const container = document.getElementById("ajax-content");
+
+  if (loadBtn && container) {
+    loadBtn.addEventListener("click", async () => {
+      container.textContent = "Loading...";
+      try {
+        const res = await fetch("extra_info.txt");
+        if (!res.ok) throw new Error("Network response was not ok");
+        const text = await res.text();
+        container.innerHTML = text;
+      } catch (err) {
+        container.textContent = "Unable to load content.";
+        console.error(err);
+      }
+    });
+  }
+});

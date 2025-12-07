@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Navy Corpsman Medical Training</title>
+  <meta name="description" content="Overview of Navy Corpsman training pipeline and field medical responsibilities.">
   <link rel="stylesheet" href="css/project.css">
+  <script src="js/main.js" defer></script>
+  <script src="js/ajax.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Medical Training</h1>
-    <nav>
+    <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="medical.html" class="active">Medical Training</a></li>
+        <li><a href="medical.html" class="active" aria-current="page">Medical Training</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
     <h2>About Navy Corpsman Training</h2>
     <p>
       Navy Corpsmen complete a rigorous five-month medical course covering the fundamentals of hospital care. 
@@ -33,33 +36,20 @@
       preparing Marines to perform life-saving procedures under combat conditions.
     </p>
 
-    <a href="https://www.navy.com/careers/hospital-corpsman" target="_blank" class="btn">Learn More on Navy.com</a>
+    <a href="https://www.navy.com/careers/hospital-corpsman" target="_blank" rel="noopener" class="btn">Learn More on Navy.com</a>
 
     <!-- AJAX Dynamic Section -->
-    <section>
-      <h3>Learn More About Medical Training</h3>
+    <section aria-labelledby="ajax-heading" class="ajax-section">
+      <h3 id="ajax-heading">Learn More About Medical Training</h3>
       <p>Click the button below to load additional information about Navy Corpsman training using AJAX.</p>
 
-      <button onclick="loadTrainingDetails()">Load Extra Information</button>
-      <div id="ajax-content" 
-           style="margin-top: 1em; background-color: #f0f8ff; padding: 10px; border-radius: 5px;">
-      </div>
+      <button id="load-more" class="btn">Load Extra Information</button>
+      <div id="ajax-content" aria-live="polite" class="ajax-content"></div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Jordi Trejo | 
-      <a href="https://validator.w3.org/">HTML Validator</a> | 
-      <a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a>
-    </p>
+    <p>&copy; 2025 Jordi Trejo | Designed by Jordi Trejo</p>
   </footer>
-
-  <!-- jQuery and jQuery UI -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-
-  <!-- Your Custom Scripts -->
-  <script src="js/main.js"></script>
-  <script src="js/ajax.js"></script>
 </body>
 </html>

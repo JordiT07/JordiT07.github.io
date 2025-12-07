@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marco's Navy Corpsman Website</title>
+  <meta name="description" content="Marco's Navy Corpsman profile — training, service, gallery, and contact information.">
   <link rel="stylesheet" href="css/project.css">
   <script src="js/main.js" defer></script>
+  <script src="js/ajax.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Marco’s Navy Corpsman Website</h1>
-    <nav>
+    <nav aria-label="Main navigation">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="medical.html">Medical Training</a></li>
@@ -21,18 +23,20 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <img src="images/navy_hospital_logo.jpg" alt="Navy Corpsmen providing field medical care" class="hero-img">
-      <h2>Dedicated to Service and Care</h2>
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-heading">
+      <img src="images/navy_hospital_logo.jpg" alt="Navy hospital insignia and Corpsmen providing field medical care" class="hero-img">
+      <h2 id="hero-heading">Dedicated to Service and Care</h2>
       <p>Marco and his fellow Corpsmen are a skilled medical team that provides critical care to the U.S. Navy fleet and United States Marine Corps. From hospital medicine to field trauma response, they ensure the health and readiness of our nation’s warriors both at sea and in combat zones.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Jordi Trejo | 
-      <a href="https://validator.w3.org/">HTML Validator</a> | 
-      <a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a>
+    <p>&copy; 2025 Jordi Trejo | Designed by Jordi Trejo</p>
+    <p class="validators">
+      <a class="validator-btn" href="https://validator.w3.org/nu/?doc=https://jordit07.github.io/itis3135/client_project/index.html" target="_blank" rel="noopener">Validate HTML</a>
+      <a class="validator-btn" href="https://jigsaw.w3.org/css-validator/validator?uri=https://jordit07.github.io/itis3135/client_project/css/project.css" target="_blank" rel="noopener">Validate CSS</a>
+      <a class="validator-btn" href="https://wave.webaim.org/report#/" target="_blank" rel="noopener">Accessibility (WAVE)</a>
     </p>
   </footer>
 </body>
